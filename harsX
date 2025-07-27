@@ -1,0 +1,22 @@
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local StarterGui = game:GetService("StarterGui")
+
+-- Create ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "LoadingScreen"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = StarterGui -- Parent to StarterGui for proper handling
+
+-- ... (rest of the UI creation code remains the same as before) ...
+
+-- Simulate loading to 99%
+for i = 1, 99 do
+    task.wait(0.03)
+    progressBar.Size = UDim2.new(i / 100, 0, 1, 0)
+    loadingText.Text = "Loading... " .. i .. "%"
+end
+
+-- Stuck at 99% - The screen will remain
+loadingText.Text = "Loading... 99%" -- Update text to 99%
+-- screenGui:Destroy()  -- This line is intentionally removed
